@@ -251,6 +251,49 @@
       box-shadow:2px 2px 0 0 var(--ink);
     }
     
+    .memes-section{
+      margin-top:50px;
+      width:100%;
+    }
+    
+    .memes-title{
+      font-family:"Pacifico",cursive;
+      font-size:clamp(32px,5vw,48px);
+      margin:0 0 30px;
+      text-shadow:3px 3px 0 var(--ink);
+      letter-spacing:1px;
+    }
+    
+    .memes-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      width:100%;
+    }
+    
+    .meme-card{
+      background:rgba(255,255,255,.1);
+      border:3px solid var(--ink);
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:5px 5px 0 0 var(--ink);
+      transition:transform .3s,box-shadow .3s;
+      cursor:pointer;
+    }
+    
+    .meme-card:hover{
+      transform:translate(-3px,-3px);
+      box-shadow:8px 8px 0 0 var(--ink);
+    }
+    
+    .meme-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      aspect-ratio:1/1;
+    }
+    
     footer{
       position:relative;
       z-index:1;
@@ -296,6 +339,17 @@
       .stat-value{font-size:20px}
       .btn{padding:14px 24px;font-size:16px}
       .ca-section{padding:15px 20px}
+      .memes-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+      }
+    }
+    
+    @media(max-width:400px){
+      .memes-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+      }
     }
   </style>
 </head>
@@ -328,6 +382,39 @@
       <div class="ca-label">Contract Address</div>
       <div class="ca-address" id="caAddress">6vRG7uQxKcx29i4LHkbd4svb4DN4uVSfatL4awfrpump</div>
       <button class="copy-btn" onclick="copyCA()">📋 Copy Address</button>
+    </div>
+    
+    <div class="memes-section">
+      <h2 class="memes-title">🔥 Dank Memes 🔥</h2>
+      <div class="memes-grid">
+        <div class="meme-card">
+          <img src="meme1.png" alt="Pepe Nuts Meme 1" />
+        </div>
+        <div class="meme-card">
+          <img src="meme2.png" alt="Pepe Nuts Meme 2" />
+        </div>
+        <div class="meme-card">
+          <img src="meme3.png" alt="Pepe Nuts Meme 3" />
+        </div>
+        <div class="meme-card">
+          <img src="meme4.png" alt="Pepe Nuts Meme 4" />
+        </div>
+        <div class="meme-card">
+          <img src="meme5.png" alt="Pepe Nuts Meme 5" />
+        </div>
+        <div class="meme-card">
+          <img src="meme6.png" alt="Pepe Nuts Meme 6" />
+        </div>
+        <div class="meme-card">
+          <img src="meme7.png" alt="Pepe Nuts Meme 7" />
+        </div>
+        <div class="meme-card">
+          <img src="meme8.png" alt="Pepe Nuts Meme 8" />
+        </div>
+        <div class="meme-card">
+          <img src="meme9.png" alt="Pepe Nuts Meme 9" />
+        </div>
+      </div>
     </div>
   </main>
 
