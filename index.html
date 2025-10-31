@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pepe Nuts 🥜</title>
+  <meta name="description" content="Pepe Nuts – the only thing that can save the market." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#66a93a;
+      --ink:#0f2b05;
+      --paper:#ffffff;
+      --accent:#ffd700;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;
+      margin:0;
+      background:radial-gradient(circle at 30% 20%, #74b84a 0%, #66a93a 40%, #4d8d29 100%);
+      color:var(--paper);
+      font-family:"Fredoka",system-ui;
+      overflow-x:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+    }
+    
+    /* Floating background elements */
+    .bg-elements{
+      position:fixed;
+      top:0;left:0;
+      width:100%;height:100%;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
+    }
+    .floater{
+      position:absolute;
+      opacity:.08;
+      animation:float 20s infinite ease-in-out;
+      font-size:60px;
+    }
+    .floater:nth-child(1){top:10%;left:10%;animation-delay:0s}
+    .floater:nth-child(2){top:60%;left:80%;animation-delay:3s;animation-duration:25s}
+    .floater:nth-child(3){top:80%;left:15%;animation-delay:6s;animation-duration:22s}
+    .floater:nth-child(4){top:30%;right:10%;animation-delay:9s}
+    .floater:nth-child(5){top:70%;right:25%;animation-delay:12s;animation-duration:18s}
+    
+    @keyframes float{
+      0%,100%{transform:translateY(0) rotate(0deg)}
+      50%{transform:translateY(-30px) rotate(10deg)}
+    }
+    
+    main{
+      position:relative;
+      z-index:1;
+      max-width:900px;
+      padding:20px;
+      animation:fadeInUp 1s ease-out;
+    }
+    
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    
+    img.logo{
+      width:520px;
+      max-width:95%;
+      height:auto;
+      margin-bottom:30px;
+      filter:drop-shadow(0 10px 25px rgba(0,0,0,.3));
+      animation:bounce 2s infinite ease-in-out;
+    }
+    
+    @keyframes bounce{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-15px)}
+    }
+    
+    h1{
+      font-family:"Pacifico",cursive;
+      font-size:clamp(42px,6vw,72px);
+      margin:0 0 20px;
+      text-shadow:4px 4px 0 var(--ink);
+      letter-spacing:2px;
+      display:none; /* Hidden since logo exists */
+    }
+    
+    p.tag{
+      font-size:clamp(20px,3vw,32px);
+      opacity:.95;
+      margin:0 0 40px;
+      font-weight:600;
+      text-shadow:2px 2px 4px rgba(0,0,0,.3);
+      line-height:1.4;
+    }
+    
+    .stats{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-bottom:40px;
+    }
+    
+    .stat-card{
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(10px);
+      border:2px solid rgba(255,255,255,.3);
+      border-radius:20px;
+      padding:15px 25px;
+      min-width:140px;
+      transition:transform .3s,background .3s;
+    }
+    
+    .stat-card:hover{
+      transform:translateY(-5px);
+      background:rgba(255,255,255,.25);
+    }
+    
+    .stat-label{
+      font-size:14px;
+      opacity:.85;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    
+    .stat-value{
+      font-size:24px;
+      font-weight:700;
+      margin-top:5px;
+    }
+    
+    .cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      justify-content:center;
+      margin-bottom:30px;
+    }
+    
+    .btn{
+      background:var(--paper);
+      color:#1f1f1f;
+      border:3px solid var(--ink);
+      padding:16px 32px;
+      border-radius:25px;
+      font-weight:700;
+      font-size:18px;
+      text-decoration:none;
+      box-shadow:6px 6px 0 0 var(--ink);
+      transition:all .15s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    
+    .btn:before{
+      content:'';
+      position:absolute;
+      top:50%;left:50%;
+      width:0;height:0;
+      border-radius:50%;
+      background:rgba(255,215,0,.3);
+      transform:translate(-50%,-50%);
+      transition:width .5s,height .5s;
+    }
+    
+    .btn:hover:before{
+      width:300px;
+      height:300px;
+    }
+    
+    .btn:hover{
+      transform:translate(-4px,-4px);
+      box-shadow:10px 10px 0 0 var(--ink);
+    }
+    
+    .btn:active{
+      transform:translate(0,0);
+      box-shadow:3px 3px 0 0 var(--ink);
+    }
+    
+    .btn.ghost{
+      background:rgba(255,255,255,.1);
+      color:var(--paper);
+      backdrop-filter:blur(5px);
+    }
+    
+    .btn.ghost:hover{
+      background:rgba(255,255,255,.2);
+    }
+    
+    .btn span{
+      position:relative;
+      z-index:1;
+    }
+    
+    .ca-section{
+      background:rgba(15,43,5,.4);
+      border:2px solid rgba(255,255,255,.2);
+      border-radius:20px;
+      padding:20px 30px;
+      margin:30px 0;
+      backdrop-filter:blur(10px);
+    }
+    
+    .ca-label{
+      font-size:14px;
+      opacity:.8;
+      margin-bottom:8px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+    
+    .ca-address{
+      font-family:monospace;
+      font-size:clamp(12px,2vw,16px);
+      word-break:break-all;
+      background:rgba(255,255,255,.1);
+      padding:12px;
+      border-radius:10px;
+      margin-bottom:10px;
+    }
+    
+    .copy-btn{
+      background:var(--accent);
+      color:var(--ink);
+      border:none;
+      padding:10px 20px;
+      border-radius:15px;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .2s,box-shadow .2s;
+      box-shadow:3px 3px 0 0 var(--ink);
+    }
+    
+    .copy-btn:hover{
+      transform:translate(-2px,-2px);
+      box-shadow:5px 5px 0 0 var(--ink);
+    }
+    
+    .copy-btn:active{
+      transform:translate(0,0);
+      box-shadow:2px 2px 0 0 var(--ink);
+    }
+    
+    footer{
+      position:relative;
+      z-index:1;
+      margin-top:50px;
+      opacity:.85;
+      font-size:14px;
+      padding:20px;
+    }
+    
+    footer a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+      transition:opacity .2s;
+    }
+    
+    footer a:hover{opacity:.8}
+    
+    /* Toast notification */
+    .toast{
+      position:fixed;
+      bottom:30px;
+      left:50%;
+      transform:translateX(-50%) translateY(100px);
+      background:var(--ink);
+      color:var(--paper);
+      padding:15px 30px;
+      border-radius:15px;
+      box-shadow:0 5px 20px rgba(0,0,0,.3);
+      opacity:0;
+      transition:all .3s ease;
+      z-index:1000;
+    }
+    
+    .toast.show{
+      transform:translateX(-50%) translateY(0);
+      opacity:1;
+    }
+    
+    @media(max-width:600px){
+      .stats{gap:10px}
+      .stat-card{min-width:100px;padding:12px 20px}
+      .stat-value{font-size:20px}
+      .btn{padding:14px 24px;font-size:16px}
+      .ca-section{padding:15px 20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-elements">
+    <div class="floater">🥜</div>
+    <div class="floater">🐸</div>
+    <div class="floater">🥜</div>
+    <div class="floater">🐸</div>
+    <div class="floater">🥜</div>
+  </div>
+
+  <main>
+    <img src="1.png" alt="Pepe Nuts Logo" class="logo" />
+    <p class="tag">Pepe's balls is the only thing that can save the market. 🚀</p>
+    
+    <div class="cta">
+      <a class="btn" href="https://x.com/i/communities/1984393291115401522" target="_blank">
+        <span>🐦 Community</span>
+      </a>
+      <a class="btn ghost" href="https://pump.fun/6vRG7uQxKcx29i4LHkbd4svb4DN4uVSfatL4awfrpump" target="_blank">
+        <span>🚀 PumpFun</span>
+      </a>
+      <a class="btn ghost" href="https://dexscreener.com/solana/qvauqujp71qgvns8g5wssidwazs9sch5xlqwtopj7ww" target="_blank">
+        <span>📊 DexScreener</span>
+      </a>
+    </div>
+    
+    <div class="ca-section">
+      <div class="ca-label">Contract Address</div>
+      <div class="ca-address" id="caAddress">6vRG7uQxKcx29i4LHkbd4svb4DN4uVSfatL4awfrpump</div>
+      <button class="copy-btn" onclick="copyCA()">📋 Copy Address</button>
+    </div>
+  </main>
+
+  <footer>
+    Made with ♥ for the trenches. Not financial advice.<br/>
+    DYOR. This is a meme coin with no intrinsic value.
+  </footer>
+  
+  <div class="toast" id="toast">Copied to clipboard! 🎉</div>
+
+  <script>
+    function copyCA() {
+      const address = document.getElementById('caAddress').textContent;
+      navigator.clipboard.writeText(address).then(() => {
+        showToast();
+      });
+    }
+    
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+    
+    // Easter egg: click logo for fun
+    document.querySelector('.logo').addEventListener('click', () => {
+      document.querySelector('.logo').style.animation = 'none';
+      setTimeout(() => {
+        document.querySelector('.logo').style.animation = 'bounce 2s infinite ease-in-out';
+      }, 10);
+    });
+  </script>
+</body>
+</html>
